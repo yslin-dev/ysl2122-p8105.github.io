@@ -5,15 +5,33 @@ output:
     toc: true
     toc_float: true
 ---
+#### Education
+* **Columbia University**: MPH in Epidemiology, Chronic Disease
+  * August 2025-May 2027
+* **New York University**: B.S. in Applied Psychology, Pre-Medicine/Pre-Medical Studies
+  * 2021-2025
 
+#### Resume
 * **Graduate Research Assistant**: Columbia University Irving Medical Center
   * May 2026-Present
-* **Graduate Research Assistant**: Columbia University Irving Medical Center
-  * May 2026-Present
-* **Graduate Research Assistant**: Columbia University Irving Medical Center
-  * May 2026-Present
-* **Graduate Research Assistant**: Columbia University Irving Medical Center
-  * May 2026-Present
+* **Social Media Director**: Columbia University Barbell Club
+  * Sept 2025-Present
+* **Administrative Intern and Volunteer**: Apex for Youth
+  * Sept 2024-May 2025
+* **Vice President**: NYU Barbell Club
+  * Aug 2024-May 2025
+* **Social Media Director**: NYU Barbell Club
+  * Sept 2023-Aug 2024
+* **Infectious Disease Summer Intern**: Kaiser Permanente
+  * July 2024-Aug 2024
+
+
+
+
+
+
+
+
 To go home, click [here](index.html)
 
 
