@@ -1,16 +1,19 @@
 ---
-title: "About"
+title: "Academic and Professional Experience"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
 
-# About this page
-
-Hey this is my about page welcome
-
-The main link is [p8105](https://p8105.com)
+* **Graduate Research Assistant**: Columbia University Irving Medical Center
+  * May 2026-Present
+* **Graduate Research Assistant**: Columbia University Irving Medical Center
+  * May 2026-Present
+* **Graduate Research Assistant**: Columbia University Irving Medical Center
+  * May 2026-Present
+* **Graduate Research Assistant**: Columbia University Irving Medical Center
+  * May 2026-Present
+To go home, click [here](index.html)
 
 

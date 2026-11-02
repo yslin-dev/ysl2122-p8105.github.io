@@ -1,21 +1,16 @@
 ---
-title: "My awesome website"
+title: "The Panda Lair"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
 
-# This is Jeff's awesome website
+#### Welcome to Yuyi's Introductory Page
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+<div class="tenor-gif-embed" data-postid="4148261905191282079" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/panda-spinning-spinning-panda-giant-panda-cute-panda-gif-4148261905191282079">Panda Spinning GIF</a>from <a href="https://tenor.com/search/panda-gifs">Panda GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
-Link to github test [github repo](https://github.com/yslin-dev/p8105_hw4_ysl2122.github.io)
-
-To learn about this page, go [here](about.html)
-
-To go home, click [here](index.html)
+To view my academic and professional qualifications, click [here](about.html)
 
 To go to plots, click [here](plots.html)
 
