@@ -1,0 +1,33 @@
+---
+title: "Homework 4"
+author: "Yuyi Lin"
+date: "2026-11-04"
+output: github_document
+---
+create a public GitHub repo + local R Project for this assignment
+submit a link to your website (not your repo) via Courseworks
+```{r message=FALSE, warning=FALSE}
+```
+
+## Problem 1
+
+Create a personal website at <YOUR_GH_NAME>.github.io (or some other reasonably-named location). This page can be as extensive as you’d like, but it should include at least:
+
+* A brief introductory landing page
+* A page giving your academic and professional experience (i.e. a resume)
+* Links in the site navigation for your GitHub account, your email, and other professional networks.
+
+Although it is not required and won’t be graded, I also encourage you to take a few minutes to review your GitHub page – make sure your name and place of work are correct, provide a link to your website, perhaps pin some repositories.
+
+
+## Problem 2
+
+Create a flexdashboard using plotly for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.). Use one of the following datasets, and load from the p8105.datasets package:
+
+* Instacart
+* NY NOAA
+* NYC Restaurant Inspections
+
+These datasets are large; you may want / need to filter or randomly sample from the complete dataset to ensure a reasonable product.
+
+
