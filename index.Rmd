@@ -10,3 +10,12 @@ output:
 # This is Jeff's awesome website
 
 ![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+
+Link to github test [github repo](https://github.com/yslin-dev/p8105_hw4_ysl2122.github.io)
+
+To learn about this page, go [here](about.html)
+
+To go home, click [here](index.html)
+
+To go to plots, click [here](plots.html)
+
