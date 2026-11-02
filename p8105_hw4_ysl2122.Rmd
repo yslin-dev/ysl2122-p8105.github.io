@@ -2,8 +2,14 @@
 title: "Homework 4"
 author: "Yuyi Lin"
 date: "2026-11-04"
-output: github_document
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    theme: cerulean
 ---
+
+Testing [P8105](https://p8105_hw4_ysl2122.com) 
 create a public GitHub repo + local R Project for this assignment
 submit a link to your website (not your repo) via Courseworks
 ```{r message=FALSE, warning=FALSE}
