@@ -1,0 +1,100 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+Loading libraries
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+library(flexdashboard)
+library(p8105.datasets)
+  data("instacart")
+```
+
+Loading data
+```{r}
+instacart_df = 
+  instacart |> 
+  janitor::clean_names() |>
+  group_by(
+    order_id,
+    order_dow,
+    order_hour_of_day,
+    days_since_prior_order
+  ) |> 
+  summarize(
+    n_products = n()
+  ) |> 
+  ungroup()
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A: 
+Does the number of days since the last order relate to the number of products purchased per order?
+
+```{r}
+scatter_df = 
+  instacart_df |> 
+  group_by(days_since_prior_order) |> 
+  summarize(
+    mean_products = mean(n_products)
+  )
+scatter_p = 
+  scatter_df |> 
+  plot_ly(
+    x = ~days_since_prior_order,
+    y = ~mean_products,
+    type = "scatter",
+    mode = "markers",
+    alpha = 0.5
+  )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+Boxplot
+```{r}
+nyc_airbnb |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
+  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
+
+box_ggplot = 
+  nyc_airbnb |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
+  ggplot(aes(x = neighbourhood, y = price, fill = neighbourhood)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+ggplotly(box_ggplot)
+```
+Barchart
+```{r}
+nyc_airbnb |> 
+  count(neighbourhood) |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
+  plot_ly(x = ~neighbourhood, y = ~n, color = ~neighbourhood, type = "bar", colors = "viridis")
+```
+
+### Chart C
+
+```{r}
+
+```
+
+
+
+
+To go home, click [here](index.html)
