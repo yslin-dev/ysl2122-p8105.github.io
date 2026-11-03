@@ -5,8 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Plots"
-      href: plots.html
+    - text: "Flexdasboard"
+      href: Flexdashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<ysl2122@cumc.columbia.edu>
     - icon: fa fa-linkedin
