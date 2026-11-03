@@ -5,6 +5,8 @@ output:
     orientation: columns
     vertical_layout: fill
 ---
+how to make tabs show up at top?
+rmarkdown::render("Dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")
 
 Loading libraries
 ```{r message=FALSE, warning=FALSE}
@@ -61,40 +63,9 @@ Column {data-width=350}
 
 ### Chart B
 
-```{r}
-
-```
-
-Boxplot
-```{r}
-nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
-
-box_ggplot = 
-  nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  ggplot(aes(x = neighbourhood, y = price, fill = neighbourhood)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-ggplotly(box_ggplot)
-```
 Barchart
-```{r}
-nyc_airbnb |> 
-  count(neighbourhood) |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
-  plot_ly(x = ~neighbourhood, y = ~n, color = ~neighbourhood, type = "bar", colors = "viridis")
-```
 
 ### Chart C
-
-```{r}
-
-```
-
-
 
 
 To go home, click [here](index.html)

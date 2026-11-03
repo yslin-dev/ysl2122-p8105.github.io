@@ -5,7 +5,7 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Dasboard"
+    - text: "Dashboard"
       href: Dashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<ysl2122@cumc.columbia.edu>
