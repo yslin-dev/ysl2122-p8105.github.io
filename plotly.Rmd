@@ -63,7 +63,7 @@ instacart_df |>
 Scatterplot indicates that products placed earlier in the cart tended to be reordered more. Purple-blue categories, such as alcohol, beverages, and canned goods seem to be have an earlier mean cart position. Snacks are notably concentrated around the middle of the cart with an average reorder_rate.
 
 ### **Boxplot**: 
-*number of products per order vs day of the week*
+*Number of products per order vs day of the week*
 
 * Note labels for days of the week are not given in the dataset; interpretation is contingent upon the assumption that 0 is Monday or some day in the beginning of the week
 ```{r}
@@ -84,7 +84,7 @@ instacart |>
 Produces seem to be ordered the most on Mondays, with Tuesday has the greatest variability and outliers in the number of products purchased per order.
 
 ### **Bar Chart**: 
-*number of orders vs hour of the day*
+*Number of orders vs hour of the day*
 
 ```{r, warning = FALSE}
 instacart |> 
