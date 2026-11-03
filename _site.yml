@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Plotly"
+      href: Plotly.html
     - text: "Dashboard"
       href: Dashboard.html
     - icon: fa-envelope fa-lg

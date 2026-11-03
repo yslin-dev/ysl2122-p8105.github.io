@@ -20,7 +20,7 @@ instacart_df =
   instacart |> 
   janitor::clean_names() |>
   group_by(
-    product_id, product_name
+    product_id, product_name, department
   ) |> 
   summarize(
     n_purchases = n(),
@@ -28,21 +28,31 @@ instacart_df =
     reorder_rate = mean(reordered)
   ) |> 
   ungroup()
+
+instacart |> 
+  count(department) |> 
+  arrange(desc(n)) |> 
+  print(n=21)
 ```
 
 ### Scatterplot: 
-* no missing variables through skimr
-
+* no missing variables through skimr on instacart
+* used view(instacart_df) to evaluate that mean_cart position follows a right skewed histogram distribution
+* skimr on instacart_df showed that p75 for n_purchases was 18 and p100 was 18726 so decided to use 20 as cutoff point
+* After finding `r n_distinct(pull(instacart, department))` departments, I used print(n=21) to list the total number of categories; i removed "missing" category in my department filter
+* scatter plot shows that if the product was placed earlier in the cart, it tended to be reordered more. Earlier cart position and more reordering seemed to be more common 
 ```{r}
 instacart_df |> 
-  filter(n_purchases >=20) |> 
+  filter(department %in% c("dairy eggs", "produce", "canned goods", "beverages", "deli", "snacks", "pantry", "frozen", "meat seafood", "household", "bakery", "personal care", "dry goods pasta", "babies", "other", "breakfast", "international", "alcohol", "bulk", "pets")) |> 
+  filter(n_purchases >=19) |> 
   mutate(text_label = str_c("Product: ", product_name, "\nPurchases: ", n_purchases)) |> 
   plot_ly(
     x = ~mean_cart_position,
     y = ~reorder_rate,
     type = "scatter",
     mode = "markers",
-    color = ~n_purchases,
+    color = ~department,
+    colors = "viridis",
     text = ~text_label,
     alpha = 0.5
   )
