@@ -35,10 +35,25 @@ instacart_df =
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Chart A: 
+Does the number of days since the last order relate to the number of products purchased per order?
 
 ```{r}
-
+scatter_df = 
+  instacart_df |> 
+  group_by(days_since_prior_order) |> 
+  summarize(
+    mean_products = mean(n_products)
+  )
+scatter_p = 
+  scatter_df |> 
+  plot_ly(
+    x = ~days_since_prior_order,
+    y = ~mean_products,
+    type = "scatter",
+    mode = "markers",
+    alpha = 0.5
+  )
 ```
 
 Scatterplot
