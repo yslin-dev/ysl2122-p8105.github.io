@@ -1,9 +1,8 @@
 ---
-title: "Flexdashboard"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+title: "Plotly"
+author: "Yuyi Lin"
+date: "2026-10-10"
+output: html_document
 ---
 
 Loading libraries
@@ -12,7 +11,7 @@ library(tidyverse)
 library(plotly)
 library(flexdashboard)
 library(p8105.datasets)
-data("instacart")
+  data("instacart")
 ```
 
 Loading data
@@ -20,82 +19,31 @@ Loading data
 instacart_df = 
   instacart |> 
   janitor::clean_names() |>
-  tibble(
-    x = rnorm(100, 2, 3),
-    y = x + rnorm(100)
-  )
+  group_by(
+    product_id, product_name
+  ) |> 
+  summarize(
+    n_purchases = n(),
+    mean_cart_position = mean(add_to_cart_order),
+    reorder_rate = mean(reordered)
+  ) |> 
+  ungroup()
+```
 
+### Scatterplot: 
+* no missing variables through skimr
+
+```{r}
 instacart_df |> 
-  ggplot(aes(x = x, y = y)) +
-  geom_point()
-```
-
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Chart A
-
-```{r}
-
-```
-
-Scatterplot
-```{r}
-nyc_airbnb |>
-  mutate(text_label = str_c("Price: $", price, "\nRating: ", rating)) |> 
+  filter(n_purchases >=20) |> 
+  mutate(text_label = str_c("Product: ", product_name, "\nPurchases: ", n_purchases)) |> 
   plot_ly(
-    x = ~lat, y = ~long, type = "scatter", mode = "markers",
-    color = ~price, text = ~text_label, alpha = 0.5)
-
-scatter_ggplot = 
-  nyc_airbnb |>
-  ggplot(aes(x = lat, y = long, color = price)) +
-  geom_point(alpha = 0.25) +
-  coord_cartesian()
-
-ggplotly(scatter_ggplot)
-
+    x = ~mean_cart_position,
+    y = ~reorder_rate,
+    type = "scatter",
+    mode = "markers",
+    color = ~n_purchases,
+    text = ~text_label,
+    alpha = 0.5
+  )
 ```
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
-
-```
-
-Boxplot
-```{r}
-nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
-
-box_ggplot = 
-  nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  ggplot(aes(x = neighbourhood, y = price, fill = neighbourhood)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-ggplotly(box_ggplot)
-```
-Barchart
-```{r}
-nyc_airbnb |> 
-  count(neighbourhood) |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
-  plot_ly(x = ~neighbourhood, y = ~n, color = ~neighbourhood, type = "bar", colors = "viridis")
-```
-
-### Chart C
-
-```{r}
-
-```
-
-
-
-
-To go home, click [here](index.html)
