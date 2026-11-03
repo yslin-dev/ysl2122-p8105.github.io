@@ -1,11 +1,11 @@
 ---
 title: "Plotly"
-author: "Yuyi Lin"
-date: "2026-10-10"
+author: ""
+date: ""
 output: html_document
 ---
 
-Loading libraries
+### **Loading Libraries**
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(plotly)
@@ -14,7 +14,7 @@ library(p8105.datasets)
   data("instacart")
 ```
 
-Loading data
+### **Loading Data**
 ```{r}
 instacart_df = 
   instacart |> 
@@ -28,20 +28,22 @@ instacart_df =
     reorder_rate = mean(reordered)
   ) |> 
   ungroup()
+```
 
+### **Scatterplot**: 
+*Average cart position vs reorder rate across departments*
+
+* no missing variables through skimr::skim(instacart)
+* view(instacart_df) showed that mean_cart_position follows a right skewed histogram distribution; justifies scatterplot decision on the x_axis
+* skimr::skim(instacart_df) showed p75=18 for n_purchases and p100= 18726; rounded up to 20 as cutoff point
+* After finding `r n_distinct(pull(instacart, department))` departments, print(n=21) listed total number of categories; removed "missing" category in my department filter to better show scatterplot
+```{r}
 instacart |> 
   count(department) |> 
   arrange(desc(n)) |> 
   print(n=21)
 ```
 
-### Scatterplot: 
-Relationship between average cart position and reorder rate across departments
-* no missing variables through skimr on instacart
-* used view(instacart_df) to evaluate that mean_cart position follows a right skewed histogram distribution
-* skimr on instacart_df showed that p75 for n_purchases was 18 and p100 was 18726 so decided to use 20 as cutoff point
-* After finding `r n_distinct(pull(instacart, department))` departments, I used print(n=21) to list the total number of categories; i removed "missing" category in my department filter
-* scatter plot shows that if the product was placed earlier in the cart, it tended to be reordered more. Purplish categories seem to be scattered throughout the plot, most distinctly around earlier mean cart position and higher reorder rating. snacks are notably concentrated around the middle of the cart with an average reorder_rate
 ```{r}
 instacart_df |> 
   filter(department %in% c("dairy eggs", "produce", "canned goods", "beverages", "deli", "snacks", "pantry", "frozen", "meat seafood", "household", "bakery", "personal care", "dry goods pasta", "babies", "other", "breakfast", "international", "alcohol", "bulk", "pets")) |> 
@@ -58,10 +60,12 @@ instacart_df |>
     alpha = 0.5
   )
 ```
+Scatterplot indicates that products placed earlier in the cart tended to be reordered more. Purple-blue categories, such as alcohol, beverages, and canned goods seem to be have an earlier mean cart position. Snacks are notably concentrated around the middle of the cart with an average reorder_rate.
 
-### Boxplot: 
-Number of products per order against day of the week
-* days of the week are not given but if 0 represents monday then the monday seems to have the most number of products per order, and tuesday has the greatest variability and outliers in the number of products purchased per order
+### **Boxplot**: 
+*number of products per order vs day of the week*
+
+* Note labels for days of the week are not given in the dataset; interpretation is contingent upon the assumption that 0 is Monday or some day in the beginning of the week
 ```{r}
 instacart |> 
   group_by(order_id, order_dow) |> 
@@ -77,9 +81,11 @@ instacart |>
   )
 ```
 
-### Bar Chart: 
-Number of orders against hour of the day
-* number of orders is greatest towards the middle of the day from 10 am to about 4 pm, with the least from 12 to 6 am.
+Produces seem to be ordered the most on Mondays, with Tuesday has the greatest variability and outliers in the number of products purchased per order.
+
+### **Bar Chart**: 
+*number of orders vs hour of the day*
+
 ```{r, warning = FALSE}
 instacart |> 
   count(order_hour_of_day) |>
@@ -92,4 +98,6 @@ instacart |>
     colors = "viridis"
   )
 ```
+
+Greatest number of orders seem to be purchased around the middle of the day from 10 am to about 4 pm, with the least amount of orders made from about 12 am to 6 am.
 
