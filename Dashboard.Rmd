@@ -55,7 +55,7 @@ instacart_df |>
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Boxplot
+### Boxplot:
 
 ```{r}
 instacart |> 
@@ -72,7 +72,7 @@ instacart |>
   )
 ```
 
-### Bar Chart
+### Bar Chart:
 
 ```{r, warning = FALSE}
 instacart |> 
