@@ -59,7 +59,7 @@ instacart_df |>
   )
 ```
 
-### Scatterplot: 
+### Boxplot: 
 Number of products per order against day of the week
 * days of the week are not given but if 0 represents monday then the monday seems to have the most number of products per order, and tuesday has the greatest variability and outliers in the number of products purchased per order
 ```{r}
@@ -73,6 +73,22 @@ instacart |>
     y = ~n_products,
     color = ~order_dow,
     type = "box",
+    colors = "viridis"
+  )
+```
+
+### Bar Chart: 
+Number of orders against hour of the day
+* number of orders is greatest towards the middle of the day from 10 am to about 4 pm, with the least from 12 to 6 am.
+```{r, warning = FALSE}
+instacart |> 
+  count(order_hour_of_day) |>
+  arrange(order_hour_of_day) |> 
+  plot_ly(
+    x = ~order_hour_of_day,
+    y = ~n,
+    color = ~n,
+    type = "bar",
     colors = "viridis"
   )
 ```
